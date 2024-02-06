@@ -1,0 +1,72 @@
+.card-text{
+    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+}
+.card-width{
+   min-height: 200px;
+   width: 200px;
+   margin-bottom: 10px;
+   font-family: 'Noto Sans', sans-serif;
+   font-family: 'Open Sans', sans-serif;
+}
+
+.content{
+    padding: 0px 88px;
+    margin: 60px 0px 0px;
+}
+
+.center-cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; Optional: Set height to 100% of the viewport height */
+}
+
+.center-cards h5{
+    font-size:15px;
+}
+
+.custom-dropdown.dropdown {
+    position: relative;
+}
+
+.btn-secondary:hover {
+    background-color: white;
+}
+
+.btn-custom {
+    border: 2px solid #ced4da; /* Add or adjust border color and thickness as needed */
+}
+
+.custom-dropdown-menu {
+    background-color: white;
+    border: 1px solid #ced4da;
+    border-radius: 0;
+    width: 100%;
+}
+
+.btn-custom:hover {
+    background-color: white;
+    border: 2px solid #ced4da; /* Add or adjust border color and thickness as needed */
+}
+
+.btn-custom:focus {
+    box-shadow: none;
+    border:2px solid #ced4da;
+}
+
+
+.custom-search-input {
+    outline: none;
+}
+
+.custom-search-input:focus,a#reset {
+     box-shadow: none !important; 
+     outline: none;
+    /* border-bottom: 1px solid balck; */
+}
+
+#products .loader{
+    width:auto;
+    align-items: center;
+}
