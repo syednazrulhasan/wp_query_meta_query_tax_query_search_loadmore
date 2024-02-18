@@ -136,6 +136,7 @@ add_action( 'wp_enqueue_scripts', 'filter_enqueue_scripts' );
 ```
 **Step 3** We write down our `filter.js`  to facilitate ajax calls to appropriate hooks in `functions.php` the hooks to receive ajax request from `filter.js` is as below with `filter_product`  being sent as action value from `filter.js` and further its combiled to hooks in  `wp-includes/admin-ajax.php`  to form an action as `wp_ajax_filter_product`  and `wp_ajax_nopriv_filter_product`
 
+NOTE :- This step will only work if you import the database as well as there are products already in database.
 ```
 function filter_product_callback(){ 
 
@@ -252,6 +253,7 @@ add_action('wp_ajax_nopriv_filter_product', 'filter_product_callback');
 
 **Step 4** We will write down further a shortcode to house all HTML elements to pull the interactive html elements on the page and based on their interactivity it will trigger further ajax calls.
 
+NOTE :- This step will only work if you import the database because `$field = get_field_object('field_65b6f58db81fa');` code attempts to pull a values stored in a select type ACF field in order to filter our products.
 ```
 function filter_product_shortcode(){
 
@@ -352,7 +354,7 @@ function filter_product_shortcode(){
 add_shortcode('filter_product', 'filter_product_shortcode');
 ```
 
-**Step 5** Finally we create a page template and assign it to page and we also include the shortcode.
+**Step 5** Finally we create a page template and assign it to page where we also include the shortcode to pull up the form to filter the custom post type.
 
 ```
 <?php /* Template Name: Page Filter Template */
