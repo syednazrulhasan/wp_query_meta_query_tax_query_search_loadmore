@@ -1,13 +1,16 @@
 # WP_Query Meta_Query Tax_Query Date_Query with jQuery & Ajax
-This repo contains code that helps to learn about Ajax jQuery WP_Query Meta_Query Tax_Query Date_Query
+This repo contains code that helps to learn about WP_Query Meta_Query Tax_Query Date_Query Search Pagination using Ajax & jQuery 
 ===================================
 
 ### Intro
-Wordpress provides a very fine way to organize data through Custom Post Types and Custom Taxonomy you can learn more by take a look at a YT video here https://youtu.be/JLWx3vJSjoM?feature=shared 
+Wordpress provides a very fine way to organize data through Custom Post Types and Custom Taxonomy you can learn more by viewing a YT video here https://youtu.be/JLWx3vJSjoM?feature=shared 
 
-The purpose of the video or this repo to provide an easy understanding ot Meta_Query Tax_Query Data_Query Search which are used within WP_Query and that too with  Load More using Ajax Calls with jQuery
+The purpose of the video mentioned above or this repo to provide an easy understanding ot Meta_Query Tax_Query Date_Query Search which are used within WP_Query and that too with  Load More using Ajax Calls with jQuery. For Date_Query you can take a look at example code from [this](https://github.com/syednazrulhasan/wp-load-more-plugin) repo
 
-For this we have created a custom post type `products` and custom taxonomy `product-brand` linked to this custom post type  and placed the code in active themes `functions.php` which is as below.
+***NOTE :- PLEASE MAKE SURE TO INCLUDE WP_NOUNCE FOR SECURITY PURPOSE IN AJAX CALLS SINCE THIS CODE IS FOR BEGINNERS SO IT HAS BEEN EXCLUDED FROM THE CODE TO HELP THEM LEARN AJAX CALLS IN WORDPRESS*** 
+
+**Step 1** Here is the code break down needed to achieve same for this we have created a custom post type `products` and custom taxonomy `product-brand` linked to this custom post type and placed the code in active theme's `functions.php` which is as below.
+ 
 
 ```
 // Register Custom Post Type
@@ -107,9 +110,9 @@ function product_brand() {
 add_action( 'init', 'product_brand', 0 );
 ```
 
-Here is the code break down needed to achieve same 
 
-**Step 1** We need to enqueue our code in functions.php of active theme and also localize the script so that we are able to pass alng php variables to the script to be utilized there as an javascript objects here we are passing `ajaxurl` and `templatedirectory` to `filter.js`
+
+**Step 2** We need to enqueue our code in functions.php of active theme and also localize the script so that we are able to pass alng php variables to the script to be utilized there as an javascript objects here we are passing `ajaxurl` and `templatedirectory` to `filter.js`
 
 ```
 
@@ -131,7 +134,7 @@ function filter_enqueue_scripts(){
 add_action( 'wp_enqueue_scripts', 'filter_enqueue_scripts' );
 
 ```
-**Step 2** We write down our `filter.js`  to facilitate ajax calls to appropriate hooks in `functions.php` the hooks to receive ajax request from `filter.js` is as below with `filter_product`  being sent as action value from `filter.js` and further its combiled to hooks in  `wp-includes/admin-ajax.php`  to form an action as `wp_ajax_filter_product`  and `wp_ajax_nopriv_filter_product`
+**Step 3** We write down our `filter.js`  to facilitate ajax calls to appropriate hooks in `functions.php` the hooks to receive ajax request from `filter.js` is as below with `filter_product`  being sent as action value from `filter.js` and further its combiled to hooks in  `wp-includes/admin-ajax.php`  to form an action as `wp_ajax_filter_product`  and `wp_ajax_nopriv_filter_product`
 
 ```
 function filter_product_callback(){ 
@@ -247,7 +250,7 @@ add_action('wp_ajax_nopriv_filter_product', 'filter_product_callback');
 
 ```
 
-**Step 3** We will write down further a shortcode to house all HTML elements to pull the interactive html elements on the page and based on their interactivity it will trigger further ajax calls.
+**Step 4** We will write down further a shortcode to house all HTML elements to pull the interactive html elements on the page and based on their interactivity it will trigger further ajax calls.
 
 ```
 function filter_product_shortcode(){
@@ -349,7 +352,7 @@ function filter_product_shortcode(){
 add_shortcode('filter_product', 'filter_product_shortcode');
 ```
 
-**Step 4** Finally we create a page template and assign it to page and we also include the shortcode.
+**Step 5** Finally we create a page template and assign it to page and we also include the shortcode.
 
 ```
 <?php /* Template Name: Page Filter Template */
